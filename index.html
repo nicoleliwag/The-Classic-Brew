@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Classic Brew</title>
+    <style>
+
+        * {
+            box-sizing: border-box; /* Include padding and borders in width/height */
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            }
+
+        header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(111, 78, 55, 0.9);
+            color: #fff;
+            padding: 20px;
+            height: 300px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 2.5em;
+            margin: 0;
+            z-index: 20;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            z-index: 20;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-family: 'Lato', sans-serif;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fading images section */
+        .header-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .header-images img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: fadeAnimation 15s infinite;
+        }
+
+        .header-images img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .header-images img:nth-child(2) {
+            animation-delay: 7.5s;
+        }
+
+        .header-images img:nth-child(3) {
+            animation-delay: 7.5s;
+        }
+
+        @keyframes fadeAnimation {
+            0% { 
+                opacity: 0; 
+            }
+            20% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0; 
+            }
+        }
+
+        /* Moving sentence styling */
+        .moving-text-container {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(111, 78, 55, 0.8);
+            color: #fff;
+            font-size: 1em;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .moving-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: moveText 170s linear infinite;
+            letter-spacing: 2px;
+            word-spacing: 10px;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background-color: #fff;
+            position: relative;
+            padding: 20px;
+            color: #6f4e37;
+            text-align: center;
+        }
+
+        .welcome-section-content {
+            background-color: #FAF9F6;
+            position: relative;
+            padding: 20px;
+            color: #6f4e37;
+            text-align: center;
+        }
+
+
+        .welcome-description h2 {
+            font-size: 2.0em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', sans-serif;
+            text-align: center;
+        }
+
+        .welcome-description h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', sans-serif;
+            text-align: center;
+        }
+
+        .welcome-description p {
+            font-size: 1.2em;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', sans-serif;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #8B4513; /* Dark brown */
+            margin: 10px auto 0; /* Center line and space below */
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 2.5em;
+            color: #6f4e37;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .floating-section {
+            padding: 50px 0;
+            background-color: #f4f4f4; /* Light background color */
+        }
+
+        .aboutus-content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .image-container {
+            width: 50%; /* Takes half of the section */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .image-container img {
+            max-width: 400px; 
+            max-height: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Floating shadow effect */
+            border-radius: 0px;
+            position: absolute; /* Makes the image appear "floating" */
+            left: 20%;
+        }
+
+        .description {
+            width: 45%; /* Adjust width to keep balance with the image */
+            text-align: left;
+            padding-right: 40px;
+            color: #6f4e37;
+        }
+
+
+        .description h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #6f4e37;
+        }
+
+        .description p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Menu Section */
+        #menu-section {
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .menu-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', sans-serif;
+            text-align: center;
+            color: #6f4e37;
+        }
+
+        .menu-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #8B4513; /* Dark brown */
+            margin: 10px auto 0; /* Center line and space below */
+            margin-bottom: 10px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category h3 {
+            color: #7B5B3A;
+            font-size: 1.5em;
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .product-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product {
+            position: relative;
+            width: 180px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            background-color: #7B5B3A;
+        }
+
+        .product h4 {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        /* Uniform Image Styling */
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Floating Cart */
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #7B5B3A;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        .cart .cart-count {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .cart-items {
+
+            display: none;
+            background-color: #fff;
+            color: #000;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            width: 250px;
+            max-height: 300px; /* Set a max height for scrolling */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 200;
+        }
+
+        .cart-items ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .cart-items ul li {
+            margin-bottom: 10px;
+        }
+
+        .cart-items ul li span {
+            font-weight: bold;
+        }
+
+        .cart-items ul li .item-quantity {
+            float: right;
+        }
+
+        /* Product details */
+        .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.0;
+            letter-spacing: 0.4px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+        .product:hover .details {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Stores Section */
+        #stores-section {
+            height: auto; /* Adjust to auto for flexible content */
+            padding: 40px 20px;
+            background-color: white;
+             color: #6f4e37;
+            text-align: center; /* Center text */
+        }
+
+        .store-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', sans-serif;
+            text-align: center;
+        }
+
+        .store-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #8B4513; /* Dark brown */
+            margin: 10px auto 0; /* Center line and space below */
+            margin-bottom: 10px;
+        }
+
+        .stores-section p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            justify-content: center; /* Center the store containers */
+            gap: 30px; /* Space between store containers */
+            margin: 0; /* Ensure no external margin */
+        }
+
+        /* Store Container */
+        .store-container {
+            position: relative; /* Required for absolute positioning of overlay */
+            width: calc(50% - 40px); /* 2 containers per row */
+            height: 350px;
+            overflow: hidden; /* Ensure floating effect */
+            margin: 0; /* Ensure no external margin */
+        }
+
+        /* Image Side */
+        .image-side {
+            position: relative; /* For positioning text overlay */
+        }
+
+        .full-image {
+            width: 100%; /* Full width */
+            height: 100%; /* Fill the height of the container */
+            object-fit: cover; /* Cover the entire container */
+        }
+
+        /* Text Overlay */
+        .text-overlay {
+            position: absolute; /* Positioned relative to image side */
+            top: 50%; /* Center vertically */
+            left: 20px; /* Offset from the left */
+            transform: translateY(-50%); /* Center vertically */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 5px; /* Slight rounding for overlay */
+            text-align: left; /* Align text to the left */
+        }
+
+        .text-overlay p {
+            margin: 0; /* Remove default margin */
+            font-size: 1em; /* Set font size */
+            color: #6f4c3e; /* Dark brown text color */
+            font-family: sans-serif;
+        }
+
+        /* Directions Button */
+        .directions-btn {
+            margin-top: 5px; /* Space above button */
+            padding: 8px 12px;
+            background-color: #c59d7e; /* Lighter brown for buttons */
+            color: #fff; /* White text for buttons */
+            font-family: sans-serif;
+            border: none;
+            border-radius: 5px; /* Slight rounding for buttons */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .directions-btn:hover {
+            background-color: #b78a6e; /* Darker brown on hover */
+        }
+
+        /* Hover Effect */
+        .store-container:hover {
+            transform: scale(1.02); /* Slight scale effect on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .store-container {
+                width: 90%; /* Full width on smaller screens */
+            }
+        }
+
+        /* Customer Reservation Form */
+        #reservation-section {
+            padding: 40px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        #reservation-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #reservation-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #reservation-form input,
+        #reservation-form select,
+        #reservation-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #reservation-form button {
+            background-color: #7B5B3A;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #reservation-form button:hover {
+            background-color: #b78a6e; /* Darker brown on hover */
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: rgba(111, 78, 55, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-images">
+        <img src="https://images5.alphacoders.com/545/545747.jpg" alt="Coffee Image 1">
+        <img src="https://images.hdqwalls.com/download/coffee-beside-coffee-beans-pp-1336x768.jpg" alt="Coffee Image 2">
+        <img src="https://wallpapersmug.com/download/1920x1080/694c75/coffee-beans-roasted.jpg" alt="Coffee Image 3">
+    </div>
+
+    <h1>The Classic Brew</h1>
+    <nav>
+        <a href="#menu-section">Menu</a>
+        <a href="#stores-section">Stores</a>
+        <a href="#reservation-section">Reservation</a>
+    </nav>
+</header>
+
+<!-- Floating Cart -->
+<div class="cart">
+    <span class="cart-count">Cart (0)</span>
+    <div class="cart-items">
+        <ul id="cart-list">
+            <!-- Items will be displayed here -->
+        </ul>
+    </div>
+</div>
+
+
+<!-- Moving Text Section -->
+<div class="moving-text-container">
+    <div class="moving-text">
+        <span class="text-content"> • ようこそ   •  Welcome  •   欢迎   •   환영합니다   •   Bienvenido   •   Bem-vindo   •   Καλώς ήρθατε   •   أهلاً وسهلاً   •   Hoş geldiniz   •   Välkommen   •   Üdvözöljük   •   Maligayang pagdating   •   Selamat datang   •   Selamat datang   •   Vitajte   •   Ласкаво просимо   •   Dobrodošli   •   Tere tulemast   •   Fáilte   •   If sir gives us a 100, he has a free coffee </span>
+        <span class="text-content"> • ようこそ   •  Welcome  •   欢迎   •   환영합니다   •   Bienvenido   •   Bem-vindo   •   Καλώς ήρθατε   •   أهلاً وسهلاً   •   Hoş geldiniz   •   Välkommen   •   Üdvözöljük   •   Maligayang pagdating   •   Selamat datang   •   Selamat datang   •   Vitajte   •   Ласкаво просимо   •   Dobrodošli   •   Tere tulemast   •   Fáilte   •   If sir gives us a 100, he has a free coffee </span>
+    </div>
+</div>
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+    <div class="welcome-description">
+        <h2>Welcome</h2>
+        <p>Come savor the finest coffee in town. A timeless flavor, crafted with unmatched quality.</p>
+    </div>
+</section>
+
+<!-- Welcome Section - Content -->
+<section class="welcome-section-content">
+    <h2 class="section-title">About Us</h2>
+    <div class="container">
+        <div class="aboutus-content-wrapper">
+            <div class="image-container">
+                <img src="https://majestycoffee.com/cdn/shop/articles/coffee_beans_4_800x.jpg?v=1683532226" alt="Floating Image">
+            </div>
+            <div class="description">
+                <h2>Serving Since 2020</h2>
+                <p>
+                   The Classic Brew started with a simple idea: to create a place where coffee lovers could enjoy handcrafted brews in a warm, welcoming space. Nestled in the heart of Cavite, our shop blends tradition and quality, sourcing only the finest beans from around the world to bring out rich, bold flavors in every cup.
+                </p>
+                <p>
+                    Whether you're stopping by for your daily dose of caffeine or looking for a quiet spot to unwind, The Classic Brew is more than just a coffee shop—it's a place where every cup is made with care, and every visit feels like home. 
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu-section">
+    <h2 class="menu-title">Our Potions</h2>
+    <!-- Category 1 -->
+    <div class="category hot-drinks">
+        <h3>Hot Drinks</h3>
+        <div class="product-container">
+            <div class="product" data-name="Hot Coffee" data-price="3.00" data-image="https://media.istockphoto.com/id/1152767411/photo/cup-of-coffee-latte-isolated-on-white-background-with-clipping-path.jpg?s=612x612&w=0&k=20&c=24HBAvkahjo8LKV-6DRUklQzPJUqxjmVlBFtV5BG4tU=">
+                <img src="https://media.istockphoto.com/id/1152767411/photo/cup-of-coffee-latte-isolated-on-white-background-with-clipping-path.jpg?s=612x612&w=0&k=20&c=24HBAvkahjo8LKV-6DRUklQzPJUqxjmVlBFtV5BG4tU=" alt="Hot Coffee">
+                <h4>Hot Coffee</h4>
+                <p class="price">$3.00</p>
+                <div class="details">
+                    <p class="extra-text">A rich blend of flavors</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">Brewed with the finest beans for a bold taste.</p>
+                </div>
+            </div>
+                <div class="product" data-name="Hot Chocolate" data-price="3.50" data-image="https://img.pikbest.com/origin/09/70/03/80WpIkbEsTT5U.png!sw800">
+                    <img src="https://img.pikbest.com/origin/09/70/03/80WpIkbEsTT5U.png!sw800" alt="Hot Chocolate">
+                    <h4>Hot Chocolate</h4>
+                    <p class="price">$3.50</p>
+                    <div class="details">
+                        <p class="extra-text">Sweet and indulgent</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Rich chocolate made with real cocoa.</p>
+                    </div>
+                </div>
+            <div class="product" data-name="Chai Latte" data-price="4.00" data-image="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20190624-37821-chailatte-onwhite-corelib-srgb.png">
+                <img src="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20190624-37821-chailatte-onwhite-corelib-srgb.png" alt="Chai Latte">
+                <h4>Chai Latte</h4>
+                <p class="price">$4.00</p>
+                <div class="details">
+                    <p class="extra-text">Spiced and comforting</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">A blend of black tea, spices, and steamed milk.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div class="category cold-drinks">
+        <h3>Cold Drinks</h3>
+
+        <!-- Iced Coffees -->
+        <div class="category iced-coffees">
+            <h4>Iced Coffees</h4>
+            <div class="product-container">
+                <div class="product" data-name="Iced Coffee" data-price="3.00" data-image="https://t3.ftcdn.net/jpg/06/26/08/80/360_F_626088010_v3Ni1cuDAabpgEuZDXNDfEL711BSCn8X.jpg">
+                    <img src="https://t3.ftcdn.net/jpg/06/26/08/80/360_F_626088010_v3Ni1cuDAabpgEuZDXNDfEL711BSCn8X.jpg" alt="Iced Coffee">
+                    <h4>Iced Coffee</h4>
+                    <div class="details">
+                        <p class="extra-text">Chilled to perfection</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Freshly brewed coffee over ice.</p>
+                    </div>
+                    <p class="price">$3.00</p>
+                </div>
+                <div class="product" data-name="Mocha Iced Coffee" data-price="3.50" data-image="https://www.starbucksathome.com/sites/default/files/2022-05/Iced%20Mocha%20KV_Short%20Shadow.png">
+                    <img src="https://www.starbucksathome.com/sites/default/files/2022-05/Iced%20Mocha%20KV_Short%20Shadow.png" alt="Mocha Iced Coffee">
+                    <h4>Mocha Iced Coffee</h4>
+                    <p class="price">$3.50</p>
+                    <div class="details">
+                        <p class="extra-text">Chocolatey delight</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Iced coffee blended with mocha syrup.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Caramel Iced Coffee" data-price="3.50" data-image="https://www.starbucks.com.au/assets/uploads/2023/08/Iced-Caramel-Macchiato.png">
+                    <img src="https://www.starbucks.com.au/assets/uploads/2023/08/Iced-Caramel-Macchiato.png" alt="Caramel Iced Coffee">
+                    <h4>Caramel Iced Coffee</h4>
+                    <p class="price">$3.50</p>
+                    <div class="details">
+                        <p class="extra-text">Sweet and creamy</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Iced coffee with rich caramel syrup.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Vanilla Iced Coffee" data-price="3.50" data-image="https://img.freepik.com/premium-psd/frappuccino-with-straw-plastic-takeaway-cup-isolated-white-background_597582-1525.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1727654400&semt=ais_hybrid" >
+                    <img src="https://img.freepik.com/premium-psd/frappuccino-with-straw-plastic-takeaway-cup-isolated-white-background_597582-1525.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1727654400&semt=ais_hybrid" alt="Vanilla Iced Coffee">
+                    <h4>Vanilla Iced Coffee</h4>
+                    <p class="price">$3.50</p>
+                    <div class="details">
+                        <p class="extra-text">Classic flavor</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Iced coffee infused with vanilla.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Hazelnut Iced Coffee" data-price="3.50" data-image="https://img.freepik.com/premium-photo/iced-hazelnut-coffee-white-background_899449-134111.jpg">
+                    <img src="https://img.freepik.com/premium-photo/iced-hazelnut-coffee-white-background_899449-134111.jpg" alt="Hazelnut Iced Coffee">
+                    <h4>Hazelnut Iced Coffee</h4>
+                    <p class="price">$3.50</p>
+                    <div class="details">
+                        <p class="extra-text">Nutty goodness</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Iced coffee with hazelnut syrup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frappes -->
+        <div class="category frappes">
+            <h4>Frappes</h4>
+            <div class="product-container">
+                <div class="product" data-name="Coffee Frappe" data-price="4.00" data-image="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20190528-30366-mochafrapp-onwhite-corelib-srgb.png">
+                    <img src="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20190528-30366-mochafrapp-onwhite-corelib-srgb.png" alt="Coffee Frappe">
+                    <h4>Coffee Frappe</h4>
+                    <p class="price">$4.00</p>
+                    <div class="details">
+                        <p class="extra-text">Chilled coffee blend</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">A creamy blend of coffee and ice.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Chocolate Frappe" data-price="4.50" data-image="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20190528-30340-javachipfrapp-onwhite-corelib-srgb.png">
+                    <img src="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20190528-30340-javachipfrapp-onwhite-corelib-srgb.png" alt="Chocolate Frappe">
+                    <h4>Chocolate Frappe</h4>
+                    <p class="price">$4.50</p>
+                    <div class="details">
+                        <p class="extra-text">Decadent chocolate treat</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Frappe with rich chocolate flavor.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Caramel Frappe" data-price="4.50" data-image="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20181113-21425-caramelfrapp-onwhite-corelib-srgb.png">
+                    <img src="https://bunny-wp-pullzone-8lgzf5kyx3.b-cdn.net/assets/uploads/2023/08/sbx20181113-21425-caramelfrapp-onwhite-corelib-srgb.png" alt="Caramel Frappe">
+                    <h4>Caramel Frappe</h4>
+                    <p class="price">$4.50</p>
+                    <div class="details">
+                        <p class="extra-text">Sweet and salty</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Creamy frappe topped with caramel.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Vanilla Frappe" data-price="4.50" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzOf6cezuSp-xDgPrAFhK2OLrLoQE1zyZb1g&s">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzOf6cezuSp-xDgPrAFhK2OLrLoQE1zyZb1g&s" alt="Vanilla Frappe">
+                    <h4>Vanilla Frappe</h4>
+                    <p class="price">$4.50</p>
+                    <div class="details">
+                        <p class="extra-text">Classic and creamy</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Smooth frappe with vanilla flavor.</p>
+                    </div>
+                </div>
+                <div class="product" data-name="Cookies and Cream Frappe" data-price="4.50" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpbpl672kP6PZ4QPkregAP-ZoRBTW4qTbUiQ&s">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpbpl672kP6PZ4QPkregAP-ZoRBTW4qTbUiQ&s" alt="Cookies and Cream Frappe">
+                    <h4>Cookies and Cream Frappe</h4>
+                    <p class="price">$4.50</p>
+                    <div class="details">
+                        <p class="extra-text">Delicious cookie treat</p>
+                        <p class="rating">⭐⭐⭐⭐⭐</p>
+                        <p class="description">Frappe blended with cookies and cream.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pastries Section -->
+    <div class="category pastries">
+        <h3>Pastries</h3>
+        <div class="product-container">
+            <div class="product" data-name="Croissant" data-price="2.50" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9C5v9gYswZZZqebgNcmOx04tynx1cSzbLZA&s">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9C5v9gYswZZZqebgNcmOx04tynx1cSzbLZA&s" alt="Croissant">
+                <h4>Croissant</h4>
+                <p class="price">$2.50</p>
+                <div class="details">
+                    <p class="extra-text">Flaky and buttery</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">Classic French pastry, perfect with coffee.</p>
+                </div>
+            </div>
+            <div class="product" data-name="Muffin" data-price="2.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNL9uCLD9W6NJwxpNC-5LtFXMktrYH-dLgTQ&s">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNL9uCLD9W6NJwxpNC-5LtFXMktrYH-dLgTQ&s" alt="Muffin">
+                <h4>Muffin</h4>
+                <p class="price">$2.00</p>
+                <div class="details">
+                    <p class="extra-text">Moist and flavorful</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">Choose from blueberry, chocolate chip, or banana.</p>
+                </div>
+            </div>
+            <div class="product" data-name="Danish Pastry" data-price="3.00" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16a9fJ5FF_YPpmdVJFxl_6UYVhx-ZqrCuDQ&s">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16a9fJ5FF_YPpmdVJFxl_6UYVhx-ZqrCuDQ&s" alt="Danish Pastry">
+                <h4>Danish Pastry</h4>
+                <p class="price">$3.00</p>
+                <div class="details">
+                    <p class="extra-text">Fruity and sweet</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">Delicious pastry filled with cream cheese.</p>
+                </div>
+            </div>
+            <div class="product" data-name="Cheesecake" data-price="4.00" data-image="https://www.starbucks.com.cn/images/products/new-york-style-creamy-cheesecake.jpg">
+                <img src="https://www.starbucks.com.cn/images/products/new-york-style-creamy-cheesecake.jpg" alt="Cheesecake">
+                <h4>Cheesecake</h4>
+                <p class="price">$4.00</p>
+                <div class="details">
+                    <p class="extra-text">Rich and creamy</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">Classic dessert with a graham cracker crust.</p>
+                </div>
+            </div>
+            <div class="product" data-name="Brownie" data-price="2.50" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTs1Y8qkOyfLvyNT4eRBmNvtveIp6N_8rjs3OXEHiTqAULt3mrVdZyg0dUATKgRYMo2U0&usqp=CAU">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTs1Y8qkOyfLvyNT4eRBmNvtveIp6N_8rjs3OXEHiTqAULt3mrVdZyg0dUATKgRYMo2U0&usqp=CAU" alt="Brownie">
+                <h4>Brownie</h4>
+                <p class="price">$2.50</p>
+                <div class="details">
+                    <p class="extra-text">Chocolatey goodness</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="description">Fudgy brownie topped with chocolate ganache.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stores Section -->
+<section id="stores-section">
+    <h2 class="store-title">Our Stores</h2>
+    <p>Find our coffee shops in different locations near you. Experience the best brews, no matter where you are.</p>
+    <div class="content-wrapper">
+        <div class="store-container">
+            <div class="image-side">
+                <img src="https://www.fundingcircle.com/us/resources/wp-content/uploads/2019/12/photo-1449198063792-7d754d6f3c80-1.jpg" alt="Store 1" class="full-image">
+                <div class="text-overlay">
+                    <p>123 Main St, Cavite City</p>
+                    <p><strong>Operating Hours:</strong> Mon-Sun, 8:00 AM - 10:00 PM</p>
+                    <button class="directions-btn">Get Directions</button>
+                </div>
+            </div>
+        </div>
+        <div class="store-container reversed">
+            <div class="image-side">
+                <img src="https://images.squarespace-cdn.com/content/v1/6352a024aeb13620d6a839b0/06b31b78-2c10-496f-967c-8986490cc696/BoltonInterior-03777.JPG" alt="Store 2" class="full-image">
+                <div class="text-overlay">
+                    <p>456 Oak St, Makati City</p>
+                    <p><strong>Operating Hours:</strong> Mon-Sun, 8:00 AM - 10:00 PM</p>
+                    <button class="directions-btn">Get Directions</button>
+                </div>
+            </div>
+        </div>
+        <div class="store-container">
+            <div class="image-side">
+                <img src="https://www.atn.com.au/posts/images/coffee1.jpg" alt="Store 3" class="full-image">
+                <div class="text-overlay">
+                    <p>789 Pine St, Quezon City</p>
+                    <p><strong>Operating Hours:</strong> Mon-Sun, 8:00 AM - 11:00 PM</p>
+                    <button class="directions-btn">Get Directions</button>
+                </div>
+            </div>
+        </div>
+        <div class="store-container reversed">
+            <div class="image-side">
+                <img src="https://nolisoli.ph/wp-content/uploads/2017/11/nolisoli-eats-restaurant-mozaic-3.jpg" alt="Store 4" class="full-image">
+                <div class="text-overlay">
+                    <p>101 Maple St, Baguio City</p>
+                    <p><strong>Operating Hours:</strong> Mon-Sun, :00 AM - 11:00 PM</p>
+                    <button class="directions-btn">Get Directions</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reservation-section" style="padding: 40px; background-color: #f9f9f9; text-align: center;">
+    <h2 style="color: #6f4e37; font-family: 'Playfair Display', sans-serif;">Reserve Your Spot</h2>
+    <p style="color: #666; font-family: 'Lato', sans-serif;">Fill out the form below to make a reservation at your preferred location.</p>
+    
+    <form id="reservation-form" style="max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <div>
+            <label for="name" style="display: block; margin-bottom: 10px; font-weight: bold;">Your Name:</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        
+        <div>
+            <label for="email" style="display: block; margin-bottom: 10px; font-weight: bold;">Your Email:</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        
+        <div>
+            <label for="date" style="display: block; margin-bottom: 10px; font-weight: bold;">Reservation Date:</label>
+            <input type="date" id="date" name="date" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div>
+            <label for="time" style="display: block; margin-bottom: 10px; font-weight: bold;">Reservation Time:</label>
+            <input type="time" id="time" name="time" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div>
+            <label for="guests" style="display: block; margin-bottom: 10px; font-weight: bold;">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" required min="1" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div>
+            <label for="special-requests" style="display: block; margin-bottom: 10px; font-weight: bold;">Special Requests:</label>
+            <textarea id="special-requests" name="special-requests" rows="4" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Any special requests..."></textarea>
+        </div>
+
+        <div>
+            <label for="location" style="display: block; margin-bottom: 10px; font-weight: bold;">Select Location:</label>
+            <select id="location" name="location" required style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="" disabled selected>Select your location</option>
+                <option value="Store 1, 123 Cavite St, City">Store 1: 123 Cavite St, City</option>
+                <option value="Store 2, 456 Oak St, Makati City">Store 2: 456 Oak St, Makati City</option>
+                <option value="Store 3, 789 Pine St, Quezon City">Store 3: 789 Pine St, Quezon City</option>
+                <option value="Store 4, 101 Maple St, Baguio City">Store 4: 101 Maple St, Baguio City</option>
+            </select>
+        </div>
+
+        <button type="submit" style="background-color: #7B5B3A; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Submit Reservation</button>
+    </form>
+
+    <!-- Confirmation Message Container -->
+    <div id="confirmation-message" style="display: none; margin-top: 20px; padding: 20px; border-radius: 8px; background-color: #d4edda; color: #155724; font-family: 'Lato', sans-serif; max-width: 600px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); text-align: center;">
+        <div style="font-size: 50px; color: #28a745;">&#10004;</div>
+        <p>Your reservation has been successfully made! We look forward to welcoming you.</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2024 Your Coffee Shop. All Rights Reserved.</p>
+</footer>
+
+
+<script>
+let cart = {};
+const cartCount = document.querySelector('.cart-count');
+const cartItems = document.querySelector('.cart-items');
+const cartList = document.getElementById('cart-list');
+
+// Function to update the cart display
+function updateCart() {
+    const totalItems = Object.keys(cart).reduce((total, item) => total + cart[item].quantity, 0);
+    const totalPrice = Object.keys(cart).reduce((total, item) => total + (cart[item].quantity * cart[item].price), 0).toFixed(2); // Calculate total price
+
+    cartCount.textContent = `Cart (${totalItems})`;  // Update cart count
+
+    // Clear current list
+    cartList.innerHTML = '';
+
+    // Populate new list
+    for (let item in cart) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <div style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="${cart[item].image}" alt="${item}" style="width: 40px; height: 40px; margin-right: 8px; border-radius: 5px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight: bold; font-size: 1.1em; margin-bottom: 5px;">${item}</span>
+                        <span style="font-size: 0.9em;">${cart[item].quantity} x $${cart[item].price}</span>
+                    </div>
+                </div>
+
+                <!-- Size Selector -->
+                <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+                    <label>
+                        <input type="radio" name="size-${item}" value="Small" ${cart[item].size === 'Small' ? 'checked' : ''}> Small
+                    </label>
+                    <label>
+                        <input type="radio" name="size-${item}" value="Medium" ${cart[item].size === 'Medium' ? 'checked' : ''}> Medium
+                    </label>
+                    <label>
+                        <input type="radio" name="size-${item}" value="Large" ${cart[item].size === 'Large' ? 'checked' : ''}> Large
+                    </label>
+                </div>
+
+                <button class="remove-item" data-name="${item}" style="background-color: #ff6666; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Remove</button>
+            </div>
+        `;
+        cartList.appendChild(listItem);
+    }
+
+    // Display total price
+    const totalPriceDisplay = document.createElement('li');
+    totalPriceDisplay.innerHTML = `
+        <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.95em; border-top: 1px solid #ddd;">
+            <strong>Total Price:</strong> 
+            <strong>$${totalPrice}</strong>
+        </div>
+    `;
+    cartList.appendChild(totalPriceDisplay);
+
+    // Add an "Order" button
+    const orderButton = document.createElement('button');
+    orderButton.textContent = 'Place Order';
+    orderButton.classList.add('order-btn');
+    orderButton.style.marginTop = '10px';
+    orderButton.style.padding = '8px 12px';
+    orderButton.style.backgroundColor = '#7B5B3A';
+    orderButton.style.color = '#fff';
+    orderButton.style.border = 'none';
+    orderButton.style.borderRadius = '4px';
+    orderButton.style.cursor = 'pointer';
+    cartList.appendChild(orderButton);
+
+    // Add functionality to remove items from cart
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function() {
+            const itemName = this.getAttribute('data-name');
+            removeFromCart(itemName);  // Call remove function
+        });
+    });
+
+    // Handle size change
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('change', function() {
+            const itemName = this.name.split('-')[1]; // Get item name from input name
+            cart[itemName].size = this.value; // Update cart with new size
+        });
+    });
+
+    // Handle the "Place Order" button click
+    document.querySelector('.order-btn').addEventListener('click', () => {
+        alert('Your order is now on its way!');
+        cart = {}; // Clear the cart after placing order
+        updateCart(); // Update the cart display
+        cartItems.style.display = 'none'; // Hide the cart
+    });
+}
+
+// Function to remove item from cart
+function removeFromCart(itemName) {
+    if (cart[itemName]) {
+        if (cart[itemName].quantity > 1) {
+            cart[itemName].quantity--;  // Decrease quantity if more than 1
+        } else {
+            delete cart[itemName];  // Remove item from cart if quantity is 1
+        }
+        updateCart();  // Update cart display
+    }
+}
+
+// Add product to cart
+document.querySelectorAll('.product').forEach(product => {
+    product.addEventListener('click', () => {
+        const name = product.getAttribute('data-name');
+        const price = product.getAttribute('data-price');
+        const image = product.getAttribute('data-image');
+
+        if (!cart[name]) {
+            cart[name] = { price, image, size: 'Small', quantity: 1 }; // Default size to 'Small'
+        } else {
+            cart[name].quantity++;
+        }
+
+        updateCart();  // Update cart display after adding product
+    });
+});
+
+// Toggle cart visibility when clicking the cart icon
+document.querySelector('.cart').addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent cart closing when clicking inside the cart
+    cartItems.style.display = 'block'; // Show the cart
+});
+
+// Close cart when clicking outside of the cart
+document.addEventListener('click', (event) => {
+    const cartWrapper = document.querySelector('.cart-items');
+    const cartIcon = document.querySelector('.cart');
+    
+    if (!cartWrapper.contains(event.target) && !cartIcon.contains(event.target)) {
+        cartItems.style.display = 'none'; // Hide the cart when clicked outside
+    }
+});
+
+</script>
+</body>
+</html>
